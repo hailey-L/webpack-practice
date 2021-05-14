@@ -17,3 +17,4 @@ document.body.appendChild(component());
 
 //클래스이름을 사용해서 돔의 갯수가 몇개 인지 체크하는 코드 추가
 console.log($(`.${styles.helloWebpack}`).length);
+console.log(`IS_PRODUCTION MODE: ${IS_PRODUCTION}`);

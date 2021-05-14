@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './index.js',
@@ -95,6 +96,14 @@ module.exports = {
         },
       },
     },
+    // minimize: true - 웹팩 내부에서 terser 실행 압축 진행 시킴
+    minimize: true,
+    // minimizer - 압축과정에서 어떤 컴프레서 사용할 것인지 설정할 수 있음 바벨 넣고 싶은 터서 대신 바벨 넣음 됨
+    minimizer: [
+      new TerserWebpackPlugin({
+        cache: true, // 빠르게 빌드 진행되도록 작성한 코드
+      }),
+    ],
   },
   mode: 'none',
 };
